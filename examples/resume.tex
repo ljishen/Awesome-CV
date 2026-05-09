@@ -21,7 +21,7 @@
 \documentclass[11pt, a4paper]{awesome-cv}
 
 % Configure page margins with geometry
-\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+\geometry{left=1.3cm, top=.7cm, right=1.3cm, bottom=1.1cm, footskip=.5cm}
 
 % Color for highlights
 % Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
@@ -42,7 +42,10 @@
 \setbool{acvSectionColorHighlight}{true}
 
 % If you would like to change the social information separator from a pipe (|) to something else
-\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+\renewcommand{\acvHeaderSocialSep}{\enskip\textbar\enskip}
+\renewcommand{\acvHeaderAfterSocialSkip}{4mm}
+\renewcommand{\acvSectionTopSkip}{2mm}
+\renewcommand{\acvSectionContentTopSkip}{2mm}
 
 
 %-------------------------------------------------------------------------------
@@ -52,13 +55,13 @@
 % Available options: circle|rectangle,edge/noedge,left/right
 % \photo[rectangle,edge,right]{./examples/profile}
 \name{Jianshen}{Liu}
-\position{Staff Engineer{\enskip\cdotp\enskip}Distributed Systems \& AI Infrastructure Expert}
+\position{Principal Engineer{\enskip\cdotp\enskip}Agentic AI Storage \& Distributed Systems Expert}
 \address{Markham, ON L3R 6L5, Canada}
 
 \mobile{+1 (437) 340-4427}
 \email{ljishen@gmail.com}
 %\dateofbirth{January 1st, 1970}
-\homepage{www.jianshenliu.com}
+% \homepage{www.jianshenliu.com}
 \github{ljishen}
 \linkedin{jianshenliu}
 % \gitlab{gitlab-id}
@@ -100,18 +103,8 @@
 
 %-------------------------------------------------------------------------------
 %	CV/RESUME CONTENT
-%	Each section is imported separately, open each file in turn to modify content
+%	Active resume components are listed here and imported from examples/resume/.
 %-------------------------------------------------------------------------------
-% \input{resume/summary.tex}
-% \input{resume/experience.tex}
-% \input{resume/honors.tex}
-%\input{resume/certificates.tex}
-% \input{resume/presentation.tex}
-% \input{resume/writing.tex}
-% \input{resume/committees.tex}
-% \input{resume/education.tex}
-% \input{resume/extracurricular.tex}
-
 \input{resume/summary}
 \input{resume/skills}
 \input{resume/experience}
@@ -119,7 +112,7 @@
 \input{resume/honors}
 \input{resume/publications}
 \input{resume/presentations}
-%\input{resume/certificates}
+\input{resume/certifications}
 % \input{resume/committees}
 
 

@@ -95,6 +95,31 @@ docker run --rm --user $(id -u):$(id -g) -i -w "/doc" -v "$PWD":/doc texlive/tex
 
 In either case, this should result in the creation of ``{your-cv}.pdf``
 
+##### Updating `examples/resume.pdf`
+
+The active résumé source is [`examples/resume.tex`](examples/resume.tex), which imports résumé sections from [`examples/resume/`](examples/resume/). After editing the résumé source files, run the following from the repository root to overwrite [`examples/resume.pdf`](examples/resume.pdf):
+
+```bash
+rm -f examples/resume.{aux,bbl,bcf,blg,log,out,run.xml,toc}
+lualatex -interaction=nonstopmode -halt-on-error -output-directory=examples examples/resume.tex
+biber --input-directory examples --output-directory examples resume
+lualatex -interaction=nonstopmode -halt-on-error -output-directory=examples examples/resume.tex
+lualatex -interaction=nonstopmode -halt-on-error -output-directory=examples examples/resume.tex
+```
+
+The first LaTeX pass writes bibliography metadata, `biber` resolves the publications and presentations, and the final two LaTeX passes update cross-references and produce the final PDF. To verify the result:
+
+```bash
+mutool info examples/resume.pdf | grep '^Pages:'
+```
+
+If the LaTeX tools are missing on Ubuntu, install the required packages with:
+
+```bash
+sudo apt-get update
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y texlive-luatex texlive-xetex texlive-latex-extra texlive-fonts-extra biber fonts-roboto fonts-font-awesome
+```
+
 ##### List of Publications
 
 You can generate list of publication from [**BibTeX**](http://www.bibtex.org/) source files.

@@ -11,15 +11,16 @@
 
 %---------------------------------------------------------
   \cventry
-    {Staff Engineer} % Job title
+    {Principal Engineer} % Job title
     {Huawei Technologies Canada Co., Ltd.} % Organization
     {Markham, Canada} % Location
     {Apr 2025 -- Present} % Date(s)
     {
       \begin{cvitems} % Description(s) of tasks/responsibilities
-        \item {Led end-to-end delivery of file-over-memory project from research through platform team technology transfer}
-        \item {Boosted inference performance by 80\% over vLLM by optimizing file-over-memory architecture and resolving E2E bottlenecks}
-        \item {Established code review and quality standards, reducing validation cycles and improving service stability}
+        \item {Lead Agent Memory Storage implementation enabling GPU-initiated I/O directly to remote storage, reducing data-path overhead for agentic AI and inference workloads}
+        \item {Drive end-to-end File-over-Memory delivery from research prototype through platform-team technology transfer}
+        \item {Boosted vLLM inference performance by 80\% by profiling end-to-end bottlenecks and optimizing the File-over-Memory data path}
+        \item {Established code-review and quality standards for storage services, reducing validation cycles and improving service stability}
       \end{cvitems}
     }
 
@@ -31,10 +32,10 @@
     {Aug 2023 -- Mar 2025} % Date(s)
     {
       \begin{cvitems} % Description(s) of tasks/responsibilities
-        \item {Engineered xPU data-direct accelerator: 2.9 GB/s at 73\% PCIe Gen3 utilization, 25\% better than Nvidia's BaM}
-        \item {Reduced file-over-memory latency by 90\% through protocol optimization between client library and manager}
-        \item {Developed PD disaggregation feature for vLLM and session management for AI workload scheduler (AiWS)}
-        \item {Mentored 6+ engineers on system design and I/O optimization}
+        \item {Engineered xPU data-direct accelerator reaching 2.9\,GB/s at 73\% PCIe Gen3 utilization, 25\% better than NVIDIA BaM}
+        \item {Reduced File-over-Memory latency by 90\% through protocol optimization between client library and manager}
+        \item {Developed prefill/decode (PD) disaggregation for vLLM and session management for AI Workload Scheduler (AiWS), improving infrastructure support for scalable inference workloads}
+        \item {Mentored 6+ engineers on distributed-system design, storage data paths, and I/O optimization}
       \end{cvitems}
     }
 
@@ -46,11 +47,11 @@
     {Jan 2016 -- Jul 2023} % Date(s)
     {
       \begin{cvitems} % Description(s) of tasks/responsibilities
-        \item {Developed \textbf{SmartNICs}-based distributed data-flow platform for HPC at \href{https://www.sandia.gov/}{Sandia National Laboratories}}
+        \item {Researched SmartNIC/DPU and computational-storage architectures for in-transit data processing, embedded data services, and HPC storage systems at \href{https://www.sandia.gov/}{Sandia National Laboratories}}
         \item {Implemented \href{https://github.com/ljishen/bitar}{\textit{Bitar}}, a C++ library using Apache Arrow and DPDK, accelerating data compression \textgreater 8x with BlueField-2 DPU}
-        \item {Published 6 peer-reviewed papers; work featured in \href{https://www.nextplatform.com/2021/05/24/testing-the-limits-of-the-bluefield-2-smartnic/}{The Next Platform} and \href{https://www.datacenterdynamics.com/en/news/intel-pitches-infrastructure-processing-unit-as-new-data-center-dpu/}{Data Centre Dynamics}}
-        \item {Contributed to Ceph and Apache Arrow open-source projects}
-        \item {Developed \href{https://github.com/ljishen/nofscache}{\textit{no\_fscache}}, a Linux kernel module addressing page cache pollution issues}
+        \item {Published 6 peer-reviewed papers on composable data services and storage offload; work featured in \href{https://www.nextplatform.com/2021/05/24/testing-the-limits-of-the-bluefield-2-smartnic/}{The Next Platform} and \href{https://www.datacenterdynamics.com/en/news/intel-pitches-infrastructure-processing-unit-as-new-data-center-dpu/}{Data Centre Dynamics}}
+        \item {Contributed to Ceph and Apache Arrow open-source projects, strengthening distributed-storage and columnar-data-system expertise}
+        \item {Developed \href{https://github.com/ljishen/nofscache}{\textit{no\_fscache}}, a Linux kernel module addressing page cache pollution issues in storage-system benchmarking}
       \end{cvitems}
     }
 
@@ -62,8 +63,8 @@
     {Jun 2020 -- Sep 2020} % Date(s)
     {
       \begin{cvitems} % Description(s) of tasks/responsibilities
-        \item {Quantified \textgreater 10x performance speedup of SQL query offload to SSDs using MariaDB, Docker, and TPC-H benchmarks}
-        \item {Collaborated on cross-team projects to identify IO performance issues in NUMA systems}
+        \item {Quantified \textgreater 10x performance speedup for SQL query offload to SSDs using MariaDB, Docker, and TPC-H benchmarks}
+        \item {Collaborated across product and engineering teams to identify I/O performance issues in NUMA systems}
       \end{cvitems}
     }
 
@@ -76,7 +77,7 @@
     {
       \begin{cvitems} % Description(s) of tasks/responsibilities
         \item {Built distributed testing framework for Samsung Network KV device performance evaluation}
-        \item {Created eBPF and kprobe tools exposing performance observability; identified bottlenecks boosting write performance by 60\%}
+        \item {Created eBPF and kprobe observability tools, identified storage bottlenecks, and boosted write performance by 60\%}
       \end{cvitems}
     }
 
