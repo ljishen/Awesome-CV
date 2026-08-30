@@ -97,7 +97,23 @@ In either case, this should result in the creation of ``{your-cv}.pdf``
 
 ##### Updating `examples/resume.pdf`
 
-The active résumé source is [`examples/resume.tex`](examples/resume.tex), which imports résumé sections from [`examples/resume/`](examples/resume/). After editing the résumé source files, run the following from the repository root to overwrite [`examples/resume.pdf`](examples/resume.pdf):
+The active résumé source is [`examples/resume.tex`](examples/resume.tex), which imports résumé sections from [`examples/resume/`](examples/resume/). After editing the résumé source files, run the following from the repository root to overwrite [`examples/resume.pdf`](examples/resume.pdf).
+
+Using Docker (no local TeX installation needed):
+
+```bash
+rm -f examples/resume.{aux,bbl,bcf,blg,log,out,run.xml,toc}
+docker run --rm --user "$(id -u):$(id -g)" -w /doc -v "$PWD":/doc \
+  texlive/texlive:latest bash -c '
+    set -e
+    lualatex -interaction=nonstopmode -halt-on-error -output-directory=examples examples/resume.tex
+    biber --input-directory examples --output-directory examples resume
+    lualatex -interaction=nonstopmode -halt-on-error -output-directory=examples examples/resume.tex
+    lualatex -interaction=nonstopmode -halt-on-error -output-directory=examples examples/resume.tex
+  '
+```
+
+Or with a local TeX installation, the same four commands:
 
 ```bash
 rm -f examples/resume.{aux,bbl,bcf,blg,log,out,run.xml,toc}
@@ -107,11 +123,22 @@ lualatex -interaction=nonstopmode -halt-on-error -output-directory=examples exam
 lualatex -interaction=nonstopmode -halt-on-error -output-directory=examples examples/resume.tex
 ```
 
-The first LaTeX pass writes bibliography metadata, `biber` resolves the publications and presentations, and the final two LaTeX passes update cross-references and produce the final PDF. To verify the result:
+The first LaTeX pass writes bibliography metadata, `biber` resolves the publications and presentations, and the final two LaTeX passes update cross-references and produce the final PDF. To verify the result before cleaning up:
 
 ```bash
-mutool info examples/resume.pdf | grep '^Pages:'
+grep 'Output written on' examples/resume.log
 ```
+
+Then remove the build artifacts — note that `examples/resume.run.xml` is *not* covered by `.gitignore`, so it will show up as an untracked file if left behind:
+
+```bash
+rm -f examples/resume.{aux,bbl,bcf,blg,log,out,run.xml,toc}
+```
+
+Two things to be aware of when building the résumé:
+
+* Do **not** use `make` for this. Its default target skips `biber` (so **Publications** and **Presentations** come out empty) and it also rebuilds `examples/cv.pdf` and `examples/coverletter.pdf`.
+* The document class actually used is [`examples/awesome-cv.cls`](examples/awesome-cv.cls), not the `awesome-cv.cls` at the repository root — LaTeX resolves `\documentclass{awesome-cv}` from the main file's own directory first. Style changes must go into the copy under `examples/`; edits to the root file have no effect on the built PDF.
 
 If the LaTeX tools are missing on Ubuntu, install the required packages with:
 
